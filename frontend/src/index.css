@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #F8F7F2;
+    color: #1A1A1A;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    background-color: #D4AF37;
+    color: #0B1F3A;
+  }
+  .btn-primary:hover {
+    background-color: #b8941e;
+    color: #fff;
+  }
+  .btn-navy {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    background-color: #0B1F3A;
+    color: #D4AF37;
+  }
+  .btn-navy:hover {
+    background-color: #142d5e;
+  }
+  .btn-outline {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: 2px solid #D4AF37;
+    color: #D4AF37;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover {
+    background-color: #D4AF37;
+    color: #0B1F3A;
+  }
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #0B1F3A;
+  }
+  .section-sub {
+    color: #6b7280;
+    font-size: 1.125rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .gold-text {
+    color: #D4AF37;
+  }
+  .navy-bg {
+    background-color: #0B1F3A;
+  }
+  .gold-bg {
+    background-color: #D4AF37;
+  }
+}
