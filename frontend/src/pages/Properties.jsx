@@ -239,11 +239,6 @@ export default function Properties() {
               </div>
             ))}
           </div>
-        ) : error ? (
-          <div className="text-center py-20">
-            <p className="text-5xl mb-4">⚠️</p>
-            <p className="text-red-500 text-lg">{error}</p>
-          </div>
         ) : normalized.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-6xl mb-4">🏚</p>
