@@ -64,17 +64,16 @@ export default function Home() {
   const [search, setSearch]   = useState('')
   const [type, setType]       = useState('')
   const [featured, setFeatured] = useState(featuredProperties)
-  const navigate = undefined // will use Link redirect
 
   useEffect(() => {
-    // Try to load real properties from backend
+    // Try to load real properties from backend, fall back to hardcoded
     import('../api/axios').then(({ default: api }) => {
       api.get('/properties?per_page=3')
         .then(res => {
           const items = res.data.data ?? res.data
           if (items.length > 0) setFeatured(items.slice(0, 3))
         })
-        .catch(() => {}) // silently fall back to hardcoded
+        .catch(() => {})
     })
   }, [])
 

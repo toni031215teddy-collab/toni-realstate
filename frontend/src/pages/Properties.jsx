@@ -94,12 +94,16 @@ export default function Properties() {
     <div className="min-h-screen" style={{ backgroundColor: '#F8F7F2' }}>
 
       {/* Page Header */}
-      <div className="relative text-white py-16 px-4"
+      <div className="relative text-white py-32 px-4"
         style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="max-w-7xl mx-auto relative z-10">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2 drop-shadow-lg">Our Properties</h1>
-          <p className="text-gray-200">Browse verified listings across Addis Ababa and Ethiopia</p>
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(11,31,58,0.75)' }} />
+        <div className="max-w-7xl mx-auto relative z-10 text-center">
+          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4"
+            style={{ backgroundColor: '#D4AF3730', color: '#D4AF37', border: '1px solid #D4AF3760' }}>
+            Listings
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold mb-3 drop-shadow-lg">Our Properties</h1>
+          <p className="text-gray-200 text-lg">Browse verified listings across Addis Ababa and Ethiopia</p>
         </div>
       </div>
 

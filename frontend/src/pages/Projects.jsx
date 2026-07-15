@@ -94,10 +94,14 @@ export default function Projects() {
     <div className="min-h-screen" style={{ backgroundColor: '#F8F7F2' }}>
 
       {/* Header */}
-      <div className="relative text-white py-20 px-4"
+      <div className="relative text-white py-32 px-4"
         style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        <div className="absolute inset-0 bg-black/65" />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(11,31,58,0.75)' }} />
         <div className="max-w-6xl mx-auto relative z-10 text-center">
+          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4"
+            style={{ backgroundColor: '#D4AF3730', color: '#D4AF37', border: '1px solid #D4AF3760' }}>
+            Portfolio
+          </span>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Our Projects</h1>
           <p className="text-gray-200 text-lg max-w-2xl mx-auto">
             From completed landmarks to exciting developments — discover what Habesha Homes is building across Addis Ababa.
