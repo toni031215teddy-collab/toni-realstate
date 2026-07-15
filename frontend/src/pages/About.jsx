@@ -47,9 +47,9 @@ const values = [
 ]
 
 const team = [
-  { name: 'Temer Bekele',  role: 'CEO & Founder',    img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200' },
-  { name: 'Tigist Haile',  role: 'Head of Sales',    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200' },
-  { name: 'Abebe Girma',   role: 'Lead Architect',   img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200' },
+  { name: 'Temer Bekele',  role: 'CEO & Founder',    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80' },
+  { name: 'Tigist Haile',  role: 'Head of Sales',    img: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&q=80' },
+  { name: 'Abebe Girma',   role: 'Lead Architect',   img: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=200&q=80' },
 ]
 
 export default function About() {
