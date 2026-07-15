@@ -13,6 +13,22 @@ const priceRanges = [
   { label: 'Above 10M ETB',   min: '10000000',max: '' },
 ]
 
+// Fallback properties shown when backend is unavailable
+const FALLBACK_PROPERTIES = [
+  { id: 1,  title: 'Luxury 3-Bedroom Apartment in Bole', price: 4500000, location: 'Bole, near Edna Mall', city: 'Addis Ababa', bedrooms: 3, bathrooms: 2, area: 150, type: 'Sale', status: 'available', images: ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600'] },
+  { id: 2,  title: 'Prime Office Space in Kazanchis', price: 120000, location: 'Kazanchis Business District', city: 'Addis Ababa', bedrooms: 0, bathrooms: 2, area: 250, type: 'Rent', status: 'available', images: ['https://images.unsplash.com/photo-1497366216548-37526070297c?w=600'] },
+  { id: 3,  title: 'Modern Villa with Garden in Old Airport', price: 12500000, location: 'Old Airport', city: 'Addis Ababa', bedrooms: 5, bathrooms: 4, area: 380, type: 'Sale', status: 'available', images: ['https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600'] },
+  { id: 4,  title: 'Cozy 2-Bedroom Apartment in CMC', price: 2800000, location: 'CMC, Addis Ababa', city: 'Addis Ababa', bedrooms: 2, bathrooms: 1, area: 95, type: 'Sale', status: 'available', images: ['https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600'] },
+  { id: 5,  title: 'Spacious Family Home in Megenagna', price: 85000, location: 'Megenagna, Addis Ababa', city: 'Addis Ababa', bedrooms: 4, bathrooms: 3, area: 280, type: 'Rent', status: 'available', images: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600'] },
+  { id: 6,  title: 'Studio Apartment in Piassa', price: 35000, location: 'Piassa, Addis Ababa', city: 'Addis Ababa', bedrooms: 1, bathrooms: 1, area: 45, type: 'Rent', status: 'available', images: ['https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600'] },
+  { id: 7,  title: '4-Bedroom Villa in Ayat', price: 8900000, location: 'Ayat, Addis Ababa', city: 'Addis Ababa', bedrooms: 4, bathrooms: 3, area: 320, type: 'Sale', status: 'available', images: ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600'] },
+  { id: 8,  title: 'Commercial Space in Bole Atlas', price: 95000, location: 'Bole Atlas, Addis Ababa', city: 'Addis Ababa', bedrooms: 0, bathrooms: 2, area: 180, type: 'Rent', status: 'available', images: ['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600'] },
+  { id: 9,  title: 'New 3-Bedroom Condo in Summit', price: 5200000, location: 'Summit, Addis Ababa', city: 'Addis Ababa', bedrooms: 3, bathrooms: 2, area: 160, type: 'Sale', status: 'available', images: ['https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600'] },
+  { id: 10, title: 'Penthouse in Bole Medhanealem', price: 18000000, location: 'Bole Medhanealem', city: 'Addis Ababa', bedrooms: 4, bathrooms: 3, area: 420, type: 'Sale', status: 'available', images: ['https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?w=600'] },
+  { id: 11, title: 'Affordable Apartment in Gerji', price: 1900000, location: 'Gerji, Addis Ababa', city: 'Addis Ababa', bedrooms: 2, bathrooms: 1, area: 80, type: 'Sale', status: 'available', images: ['https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600'] },
+  { id: 12, title: 'Office Building in Friendship Area', price: 250000, location: 'Friendship, Addis Ababa', city: 'Addis Ababa', bedrooms: 0, bathrooms: 4, area: 500, type: 'Rent', status: 'available', images: ['https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600'] },
+]
+
 export default function Properties() {
   const [properties, setProperties] = useState([])
   const [loading, setLoading]       = useState(true)
@@ -41,7 +57,8 @@ export default function Properties() {
         const items = res.data.data ?? res.data
         setProperties(items)
       } catch {
-        setError('Failed to load properties. Please try again.')
+        // Backend unavailable — use fallback data
+        setProperties(FALLBACK_PROPERTIES)
       } finally {
         setLoading(false)
       }

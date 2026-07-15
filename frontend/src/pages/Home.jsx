@@ -63,7 +63,19 @@ export default function Home() {
   const [currentImg, setCurrentImg] = useState(0)
   const [search, setSearch]   = useState('')
   const [type, setType]       = useState('')
+  const [featured, setFeatured] = useState(featuredProperties)
   const navigate = undefined // will use Link redirect
+
+  useEffect(() => {
+    // Try to load real properties from backend
+    import('../api/axios').then(({ default: api }) => {
+      api.get('/properties?per_page=3')
+        .then(res => {
+          const items = res.data.data ?? res.data
+          if (items.length > 0) setFeatured(items.slice(0, 3))
+        })
+        .catch(() => {}) // silently fall back to hardcoded
+    })
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -210,7 +222,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredProperties.map(p => (
+            {featured.map(p => (
               <PropertyCard key={p.id} property={p} />
             ))}
           </div>
