@@ -30,8 +30,8 @@ const FALLBACK_PROPERTIES = [
 ]
 
 export default function Properties() {
-  const [properties, setProperties] = useState([])
-  const [loading, setLoading]       = useState(true)
+  const [properties, setProperties] = useState(FALLBACK_PROPERTIES)
+  const [loading, setLoading]       = useState(false)
   const [error, setError]           = useState('')
   const [search, setSearch]     = useState('')
   const [type, setType]         = useState('')
@@ -55,7 +55,11 @@ export default function Properties() {
 
         const res = await api.get('/properties', { params })
         const items = res.data.data ?? res.data
-        setProperties(items)
+        if (Array.isArray(items) && items.length > 0) {
+          setProperties(items)
+        } else {
+          setProperties(FALLBACK_PROPERTIES)
+        }
       } catch {
         // Backend unavailable — use fallback data
         setProperties(FALLBACK_PROPERTIES)
