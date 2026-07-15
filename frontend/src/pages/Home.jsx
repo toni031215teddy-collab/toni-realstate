@@ -76,6 +76,7 @@ export default function Home() {
         })
         .catch(() => {}) // silently fall back to hardcoded
     })
+  }, [])
 
   useEffect(() => {
     const timer = setInterval(() => {
