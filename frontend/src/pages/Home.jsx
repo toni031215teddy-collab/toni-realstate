@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PropertyCard from '../components/PropertyCard'
+import api from '../api/axios'
 
 const heroImages = [
   'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=80',
@@ -67,14 +68,12 @@ export default function Home() {
 
   useEffect(() => {
     // Try to load real properties from backend, fall back to hardcoded
-    import('../api/axios').then(({ default: api }) => {
-      api.get('/properties?per_page=3')
-        .then(res => {
-          const items = res.data.data ?? res.data
-          if (items.length > 0) setFeatured(items.slice(0, 3))
-        })
-        .catch(() => {})
-    })
+    api.get('/properties?per_page=3')
+      .then(res => {
+        const items = res.data.data ?? res.data
+        if (Array.isArray(items) && items.length > 0) setFeatured(items.slice(0, 3))
+      })
+      .catch(() => {})
   }, [])
 
   useEffect(() => {
