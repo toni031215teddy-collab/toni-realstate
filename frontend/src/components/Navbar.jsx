@@ -27,8 +27,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
 
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
+          {/* Logo — desktop only */}
+          <Link to="/" className="hidden md:flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl" style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>
               T
             </div>
@@ -118,7 +118,7 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Mobile Button */}
+          {/* Mobile Button — LEFT side */}
           <button
             className="md:hidden p-2"
             style={{ color: '#D4AF37' }}
@@ -135,6 +135,32 @@ export default function Navbar() {
               </svg>
             )}
           </button>
+
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 md:hidden">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg" style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>
+              H
+            </div>
+            <div>
+              <p className="font-bold text-base leading-tight" style={{ color: '#F8F7F2' }}>Habesha Homes</p>
+              <p className="text-xs" style={{ color: '#D4AF37' }}>Addis Ababa, Ethiopia</p>
+            </div>
+          </Link>
+
+          {/* Mobile right — favorites icon */}
+          <Link to="/favorites" className="md:hidden relative p-2" style={{ color: '#D4AF37' }}>
+            <svg className="w-6 h-6" fill={favorites.length > 0 ? '#D4AF37' : 'none'}
+              stroke="#D4AF37" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            {favorites.length > 0 && (
+              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full text-xs font-bold flex items-center justify-center"
+                style={{ backgroundColor: '#e11d48', color: 'white', fontSize: '10px' }}>
+                {favorites.length}
+              </span>
+            )}
+          </Link>
         </div>
 
         {/* Mobile Menu */}
