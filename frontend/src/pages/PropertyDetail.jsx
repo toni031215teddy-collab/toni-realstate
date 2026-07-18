@@ -111,7 +111,7 @@ export default function PropertyDetail() {
           ← Back to Properties
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4">
 
           {/* ── Left Column ── */}
           <div className="lg:col-span-2 space-y-6">

@@ -95,7 +95,8 @@ export default function Home() {
     <div>
 
       {/* Hero Section */}
-      <section className="relative h-[620px] flex items-center justify-center overflow-hidden">
+      <section className="relative flex items-center justify-center overflow-hidden"
+        style={{ minHeight: '100svh', maxHeight: '700px' }}>
 
         {/* Background Images */}
         {heroImages.map((img, i) => (
@@ -113,25 +114,25 @@ export default function Home() {
             <button
               key={i}
               onClick={() => setCurrentImg(i)}
-              className="w-3 h-3 rounded-full transition-all"
+              className="w-2.5 h-2.5 rounded-full transition-all"
               style={{ backgroundColor: i === currentImg ? '#D4AF37' : 'rgba(255,255,255,0.4)' }}
             />
           ))}
         </div>
 
         {/* Content */}
-        <div className="relative z-10 text-white text-center px-4 max-w-5xl mx-auto w-full">
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-3 drop-shadow-lg">
-            Discover Premium Properties<br />Across Addis Ababa
+        <div className="relative z-10 text-white text-center px-4 max-w-5xl mx-auto w-full py-16">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-3 drop-shadow-lg">
+            Discover Premium Properties<br className="hidden sm:block" /> Across Addis Ababa
           </h1>
-          <p className="text-gray-200 text-lg mb-10 max-w-2xl mx-auto drop-shadow">
+          <p className="text-gray-200 text-base md:text-lg mb-8 max-w-2xl mx-auto drop-shadow">
             Habesha Homes — your trusted real estate partner in Ethiopia for over a decade.
           </p>
 
-          {/* ⭐ SEARCH BAR */}
+          {/* Search Bar */}
           <form onSubmit={handleSearch} className="bg-white rounded-2xl p-3 flex flex-col sm:flex-row gap-3 max-w-3xl mx-auto shadow-2xl">
             <div className="flex-1 relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg">📍</span>
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">📍</span>
               <input
                 type="text"
                 placeholder="Search by location, e.g. Bole, CMC..."
@@ -152,7 +153,7 @@ export default function Home() {
             </select>
             <button
               type="submit"
-              className="px-8 py-3 rounded-xl font-bold text-sm transition-colors flex-shrink-0"
+              className="px-6 py-3 rounded-xl font-bold text-sm transition-colors flex-shrink-0"
               style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}
             >
               🔍 Search

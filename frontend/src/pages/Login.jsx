@@ -30,7 +30,7 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: '#F8F7F2' }}>
+    <div className="min-h-screen flex flex-col lg:flex-row" style={{ backgroundColor: '#F8F7F2' }}>
 
       {/* Left panel — decorative */}
       <div className="hidden lg:flex lg:w-1/2 relative items-center justify-center overflow-hidden"

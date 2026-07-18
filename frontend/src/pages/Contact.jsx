@@ -98,7 +98,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Grid */}
-      <div className="max-w-6xl mx-auto px-4 py-16 grid grid-cols-1 lg:grid-cols-5 gap-10">
+      <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-5 gap-8">
 
         {/* ── Left: Info + Map ── */}
         <div className="lg:col-span-2 space-y-6">

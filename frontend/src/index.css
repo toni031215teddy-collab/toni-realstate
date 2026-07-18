@@ -10,6 +10,13 @@
     color: #1A1A1A;
     font-family: 'Inter', sans-serif;
   }
+  * {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+  }
+  img {
+    max-width: 100%;
+  }
 }
 
 @layer components {
@@ -52,25 +59,46 @@
     color: #0B1F3A;
   }
   .section-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 700;
     margin-bottom: 0.75rem;
     color: #0B1F3A;
   }
+  @media (min-width: 768px) {
+    .section-title {
+      font-size: 2rem;
+    }
+  }
   .section-sub {
     color: #6b7280;
-    font-size: 1.125rem;
+    font-size: 1rem;
     max-width: 42rem;
     margin-left: auto;
     margin-right: auto;
   }
-  .gold-text {
-    color: #D4AF37;
+  @media (min-width: 768px) {
+    .section-sub {
+      font-size: 1.125rem;
+    }
   }
-  .navy-bg {
-    background-color: #0B1F3A;
+  .gold-text { color: #D4AF37; }
+  .navy-bg   { background-color: #0B1F3A; }
+  .gold-bg   { background-color: #D4AF37; }
+
+  /* Mobile-safe card */
+  .property-card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
-  .gold-bg {
-    background-color: #D4AF37;
+  @media (min-width: 640px) {
+    .property-card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .property-card-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }
