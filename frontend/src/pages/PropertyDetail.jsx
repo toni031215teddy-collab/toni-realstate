@@ -89,7 +89,7 @@ export default function PropertyDetail() {
             </span>
           </div>
           {/* Quick action buttons */}
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             <a href="https://wa.me/251911000000" target="_blank" rel="noreferrer"
               className="flex items-center gap-2 text-white text-sm font-semibold px-4 py-2 rounded-xl"
               style={{ backgroundColor: '#25D366' }}>
