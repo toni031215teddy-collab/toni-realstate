@@ -6,16 +6,41 @@ import ScheduleViewing from '../components/ScheduleViewing'
 // Lazy load map to avoid SSR issues
 const PropertyMap = lazy(() => import('../components/PropertyMap'))
 
+// Fallback data — same as Properties.jsx
+const FALLBACK_PROPERTIES = [
+  { id: 1,  title: 'Luxury 3-Bedroom Apartment in Bole', price: 4500000, location: 'Bole, near Edna Mall', city: 'Addis Ababa', bedrooms: 3, bathrooms: 2, area: 150, type: 'sale', status: 'available', description: 'A stunning 3-bedroom apartment in the heart of Bole, one of Addis Ababa\'s most prestigious neighborhoods. Features modern finishes, spacious living areas, and a balcony with city views. Close to Edna Mall, restaurants, and international schools.', images: ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800'] },
+  { id: 2,  title: 'Prime Office Space in Kazanchis', price: 120000, location: 'Kazanchis Business District', city: 'Addis Ababa', bedrooms: 0, bathrooms: 2, area: 250, type: 'rent', status: 'available', description: 'Premium Grade-A office space in Kazanchis, Addis Ababa\'s main business district. Open-plan layout with fiber internet, 24/7 security, and dedicated parking. Ideal for corporate offices, NGOs, and embassies.', images: ['https://images.unsplash.com/photo-1497366216548-37526070297c?w=800'] },
+  { id: 3,  title: 'Modern Villa with Garden in Old Airport', price: 12500000, location: 'Old Airport', city: 'Addis Ababa', bedrooms: 5, bathrooms: 4, area: 380, type: 'sale', status: 'available', description: 'Magnificent 5-bedroom villa in the prestigious Old Airport area. Features a large private garden, modern kitchen, home office, and staff quarters. Gated compound with 24/7 security. One of the finest properties in Addis Ababa.', images: ['https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800'] },
+  { id: 4,  title: 'Cozy 2-Bedroom Apartment in CMC', price: 2800000, location: 'CMC, Addis Ababa', city: 'Addis Ababa', bedrooms: 2, bathrooms: 1, area: 95, type: 'sale', status: 'available', description: 'Well-designed 2-bedroom apartment in the quiet CMC neighborhood. Perfect for young families or investors. Close to international schools, hospitals, and supermarkets. Ready to move in.', images: ['https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800'] },
+  { id: 5,  title: 'Spacious Family Home in Megenagna', price: 85000, location: 'Megenagna, Addis Ababa', city: 'Addis Ababa', bedrooms: 4, bathrooms: 3, area: 280, type: 'rent', status: 'available', description: 'Large family home in Megenagna with 4 bedrooms, a garden, and modern amenities. Located near Megenagna roundabout with easy access to all parts of the city. Available for immediate rent.', images: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800'] },
+  { id: 6,  title: 'Studio Apartment in Piassa', price: 35000, location: 'Piassa, Addis Ababa', city: 'Addis Ababa', bedrooms: 1, bathrooms: 1, area: 45, type: 'rent', status: 'available', description: 'Compact and affordable studio apartment in Piassa, Addis Ababa\'s historic center. Fully furnished with modern appliances. Great for singles or young professionals. Walking distance to Merkato and city center.', images: ['https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800'] },
+  { id: 7,  title: '4-Bedroom Villa in Ayat', price: 8900000, location: 'Ayat, Addis Ababa', city: 'Addis Ababa', bedrooms: 4, bathrooms: 3, area: 320, type: 'sale', status: 'available', description: 'Beautiful 4-bedroom villa in the rapidly developing Ayat area. Modern architecture with quality finishes, private garden, and double garage. Great investment opportunity with high appreciation potential.', images: ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800'] },
+  { id: 8,  title: 'Commercial Space in Bole Atlas', price: 95000, location: 'Bole Atlas, Addis Ababa', city: 'Addis Ababa', bedrooms: 0, bathrooms: 2, area: 180, type: 'rent', status: 'available', description: 'Prime commercial space on the busy Bole Atlas road. High foot traffic, excellent visibility, and ample parking. Suitable for retail, restaurant, or office use.', images: ['https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800'] },
+  { id: 9,  title: 'New 3-Bedroom Condo in Summit', price: 5200000, location: 'Summit, Addis Ababa', city: 'Addis Ababa', bedrooms: 3, bathrooms: 2, area: 160, type: 'sale', status: 'available', description: 'Brand new 3-bedroom condominium in Summit with panoramic city views. Modern finishes, built-in wardrobes, and a state-of-the-art gym in the building. Ready for handover.', images: ['https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800'] },
+  { id: 10, title: 'Penthouse in Bole Medhanealem', price: 18000000, location: 'Bole Medhanealem', city: 'Addis Ababa', bedrooms: 4, bathrooms: 3, area: 420, type: 'sale', status: 'available', description: 'Exclusive penthouse on the top floor of a luxury building in Bole Medhanealem. 360-degree views of Addis Ababa, private rooftop terrace, smart home system, and 3 dedicated parking spaces. The ultimate luxury property.', images: ['https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?w=800'] },
+  { id: 11, title: 'Affordable Apartment in Gerji', price: 1900000, location: 'Gerji, Addis Ababa', city: 'Addis Ababa', bedrooms: 2, bathrooms: 1, area: 80, type: 'sale', status: 'available', description: 'Affordable 2-bedroom apartment in the growing Gerji neighborhood. Good transport links, nearby markets and schools. An excellent first home or investment property.', images: ['https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800'] },
+  { id: 12, title: 'Office Building in Friendship Area', price: 250000, location: 'Friendship, Addis Ababa', city: 'Addis Ababa', bedrooms: 0, bathrooms: 4, area: 500, type: 'rent', status: 'available', description: 'Entire office building available for rent near Friendship Business Center. 5 floors with flexible floor plans, conference rooms, cafeteria, and underground parking. Ideal for large companies or organizations.', images: ['https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800'] },
+]
+
 export default function PropertyDetail() {
   const { id } = useParams()
   const [property, setProperty] = useState(null)
   const [loading, setLoading]   = useState(true)
-  const [activeTab, setActiveTab] = useState('inquiry') // 'inquiry' | 'viewing'
+  const [activeTab, setActiveTab] = useState('inquiry')
 
   useEffect(() => {
+    // First check fallback data instantly
+    const fallback = FALLBACK_PROPERTIES.find(p => p.id === parseInt(id))
+    if (fallback) {
+      setProperty(fallback)
+      setLoading(false)
+    }
+    // Then try API — if it returns data, replace fallback
     api.get(`/properties/${id}`)
-      .then(res => setProperty(res.data))
-      .catch(() => setProperty(null))
+      .then(res => {
+        if (res.data && res.data.id) setProperty(res.data)
+      })
+      .catch(() => {})
       .finally(() => setLoading(false))
   }, [id])
 
@@ -46,8 +71,8 @@ export default function PropertyDetail() {
     </div>
   )
 
-  const isRent = property.type === 'rent'
-  const imgSrc = property.images?.[0] || 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800'
+  const isRent = property.type === 'rent' || property.type === 'Rent'
+  const imgSrc = property.images?.[0] || property.image || 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800'
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#F8F7F2' }}>
