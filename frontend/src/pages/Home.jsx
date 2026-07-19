@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PropertyCard from '../components/PropertyCard'
 import api from '../api/axios'
+import { useLang } from '../context/LanguageContext'
 
 const heroImages = [
   'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=80',
@@ -65,6 +66,7 @@ export default function Home() {
   const [search, setSearch]   = useState('')
   const [type, setType]       = useState('')
   const [featured, setFeatured] = useState(featuredProperties)
+  const { t } = useLang()
 
   useEffect(() => {
     // Try to load real properties from backend, fall back to hardcoded
@@ -123,10 +125,12 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 text-white text-center px-4 max-w-5xl mx-auto w-full py-16">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-3 drop-shadow-lg">
-            Discover Premium Properties<br className="hidden sm:block" /> Across Addis Ababa
+            {t('heroTitle').split('\n').map((line, i) => (
+              <span key={i}>{line}{i === 0 && <br className="hidden sm:block" />}</span>
+            ))}
           </h1>
           <p className="text-gray-200 text-base md:text-lg mb-8 max-w-2xl mx-auto drop-shadow">
-            Habesha Homes — your trusted real estate partner in Ethiopia for over a decade.
+            {t('heroSub')}
           </p>
 
           {/* Search Bar */}
@@ -135,7 +139,7 @@ export default function Home() {
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">📍</span>
               <input
                 type="text"
-                placeholder="Search by location, e.g. Bole, CMC..."
+                placeholder={t('searchPlaceholder')}
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 className="w-full pl-9 pr-4 py-3 rounded-xl text-gray-800 text-sm focus:outline-none"
@@ -147,29 +151,29 @@ export default function Home() {
               onChange={e => setType(e.target.value)}
               className="px-4 py-3 rounded-xl text-gray-700 text-sm focus:outline-none border border-gray-200"
             >
-              <option value="">All Types</option>
-              <option value="sale">For Sale</option>
-              <option value="rent">For Rent</option>
+              <option value="">{t('allTypes')}</option>
+              <option value="sale">{t('forSale')}</option>
+              <option value="rent">{t('forRent')}</option>
             </select>
             <button
               type="submit"
               className="px-6 py-3 rounded-xl font-bold text-sm transition-colors flex-shrink-0"
               style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}
             >
-              🔍 Search
+              {t('search')}
             </button>
           </form>
         </div>
       </section>
 
-      {/* Stats Bar — FIXED */}
+      {/* Stats Bar */}
       <section className="bg-white border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { value: '10+',  label: 'Years Experience' },
-            { value: '50+',  label: 'Projects Completed' },
-            { value: '500+', label: 'Happy Families' },
-            { value: '98%',  label: 'Client Satisfaction' },
+            { value: '10+',  label: t('yearsExp') },
+            { value: '50+',  label: t('projectsDone') },
+            { value: '500+', label: t('happyFamilies') },
+            { value: '98%',  label: t('satisfaction') },
           ].map(stat => (
             <div key={stat.label}>
               <p className="text-4xl font-bold" style={{ color: '#D4AF37' }}>{stat.value}</p>
@@ -182,17 +186,17 @@ export default function Home() {
       {/* Property Categories */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <h2 className="section-title text-center">Properties</h2>
-          <p className="section-sub text-center mb-10">Explore residential and commercial opportunities across Addis Ababa</p>
+          <h2 className="section-title text-center">{t('properties')}</h2>
+          <p className="section-sub text-center mb-10">{t('heroSub')}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
             {/* Residential */}
             <Link to="/properties?type=sale" className="group relative h-80 rounded-2xl overflow-hidden shadow-lg">
               <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800" alt="Residential" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-8">
-                <h3 className="text-white text-3xl font-bold mb-2">Residential</h3>
-                <p className="text-gray-200 mb-4">Villas, apartments, and homes designed for modern Ethiopian living</p>
-                <span style={{ color: '#D4AF37' }} className="font-semibold">Explore →</span>
+                <h3 className="text-white text-3xl font-bold mb-2">{t('residential')}</h3>
+                <p className="text-gray-200 mb-4">{t('residentialDesc')}</p>
+                <span style={{ color: '#D4AF37' }} className="font-semibold">{t('explore')}</span>
               </div>
             </Link>
 
@@ -200,9 +204,9 @@ export default function Home() {
             <Link to="/properties?type=rent" className="group relative h-80 rounded-2xl overflow-hidden shadow-lg">
               <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800" alt="Commercial" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-8">
-                <h3 className="text-white text-3xl font-bold mb-2">Commercial</h3>
-                <p className="text-gray-200 mb-4">Prime office and retail spaces in high-traffic business districts</p>
-                <span style={{ color: '#D4AF37' }} className="font-semibold">Explore →</span>
+                <h3 className="text-white text-3xl font-bold mb-2">{t('commercial')}</h3>
+                <p className="text-gray-200 mb-4">{t('commercialDesc')}</p>
+                <span style={{ color: '#D4AF37' }} className="font-semibold">{t('explore')}</span>
               </div>
             </Link>
           </div>
@@ -214,11 +218,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center mb-10">
             <div>
-              <h2 className="section-title">Featured Properties</h2>
-              <p className="text-gray-500">Hand-picked properties available now</p>
+              <h2 className="section-title">{t('featuredProperties')}</h2>
+              <p className="text-gray-500">{t('handPicked')}</p>
             </div>
             <Link to="/properties" className="btn-outline hidden md:inline-block">
-              View All
+              {t('viewAll')}
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -227,7 +231,7 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-8 md:hidden">
-            <Link to="/properties" className="btn-outline">View All Properties</Link>
+            <Link to="/properties" className="btn-outline">{t('viewAllProperties')}</Link>
           </div>
         </div>
       </section>
@@ -236,8 +240,8 @@ export default function Home() {
       <section className="py-20 px-4" style={{ backgroundColor: '#0B1F3A' }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">Why Choose Habesha Homes</h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">Your trusted real estate partner in Addis Ababa</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">{t('whyChooseUs')}</h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">{t('trustedPartner')}</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyChooseUs.map(item => (
@@ -262,8 +266,8 @@ export default function Home() {
       <section className="py-20 px-4" style={{ backgroundColor: '#F8F7F2' }}>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: '#0B1F3A' }}>What Our Clients Say</h2>
-            <p className="section-sub">Real feedback from real families across Addis Ababa</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: '#0B1F3A' }}>{t('whatClientsSay')}</h2>
+            <p className="section-sub">{t('realFeedback')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((t, i) => (
@@ -309,17 +313,15 @@ export default function Home() {
       {/* Newsletter CTA */}
       <section className="py-16 px-4 text-white" style={{ backgroundColor: '#0B1F3A' }}>
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-3">Stay Updated</h2>
-          <p className="mb-6" style={{ color: '#a0a0a0' }}>Get exclusive news on new projects, market trends, and investment opportunities.</p>
+          <h2 className="text-3xl font-bold mb-3">{t('stayUpdated')}</h2>
+          <p className="mb-6" style={{ color: '#a0a0a0' }}>{t('newsletterSub')}</p>
           <form className="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto">
-            <input
-              type="email"
-              placeholder="Your email address"
+            <input type="email" placeholder={t('emailPlaceholder')}
               className="flex-grow px-4 py-3 rounded-lg text-gray-800 focus:outline-none"
-              style={{ backgroundColor: '#F8F7F2' }}
-            />
-            <button type="submit" className="px-8 py-3 rounded-lg font-semibold transition-colors" style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>
-              Subscribe
+              style={{ backgroundColor: '#F8F7F2' }} />
+            <button type="submit" className="px-8 py-3 rounded-lg font-semibold transition-colors"
+              style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>
+              {t('subscribe')}
             </button>
           </form>
         </div>

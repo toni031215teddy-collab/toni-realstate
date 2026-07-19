@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import PropertyCard from '../components/PropertyCard'
 import api from '../api/axios'
+import { useLang } from '../context/LanguageContext'
 
 const cities = ['All Cities', 'Addis Ababa', 'Dire Dawa', 'Hawassa', 'Bahir Dar', 'Adama']
 
@@ -39,6 +40,7 @@ export default function Properties() {
   const [city, setCity]         = useState('')
   const [priceRange, setPriceRange] = useState(priceRanges[0])
   const [showFilters, setShowFilters] = useState(false)
+  const { t } = useLang()
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -100,10 +102,10 @@ export default function Properties() {
         <div className="max-w-7xl mx-auto relative z-10 text-center">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4"
             style={{ backgroundColor: '#D4AF3730', color: '#D4AF37', border: '1px solid #D4AF3760' }}>
-            Listings
+            {t('properties')}
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold mb-3 drop-shadow-lg">Our Properties</h1>
-          <p className="text-gray-200 text-lg">Browse verified listings across Addis Ababa and Ethiopia</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-3 drop-shadow-lg">{t('ourProperties')}</h1>
+          <p className="text-gray-200 text-lg">{t('browseVerified')}</p>
         </div>
       </div>
 

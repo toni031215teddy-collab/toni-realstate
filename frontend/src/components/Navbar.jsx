@@ -2,19 +2,21 @@ import { useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useFavorites } from '../context/FavoritesContext'
+import { useLang } from '../context/LanguageContext'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { user, logout } = useAuth()
   const { favorites } = useFavorites()
+  const { lang, toggleLang, t } = useLang()
   const navigate = useNavigate()
 
   const navLinks = [
-    { to: '/',           label: 'Home' },
-    { to: '/properties', label: 'Properties' },
-    { to: '/projects',   label: 'Projects' },
-    { to: '/about',      label: 'About Us' },
-    { to: '/contact',    label: 'Contact' },
+    { to: '/',           label: t('home') },
+    { to: '/properties', label: t('properties') },
+    { to: '/projects',   label: t('projects') },
+    { to: '/about',      label: t('aboutUs') },
+    { to: '/contact',    label: t('contact') },
   ]
 
   const handleLogout = async () => {
@@ -64,6 +66,14 @@ export default function Navbar() {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center gap-3">
+
+            {/* Language Toggle */}
+            <button onClick={toggleLang}
+              className="px-3 py-1.5 rounded-lg text-xs font-bold border transition-all"
+              style={{ borderColor: '#D4AF37', color: '#D4AF37' }}
+              title={lang === 'en' ? 'Switch to Amharic' : 'Switch to English'}>
+              {lang === 'en' ? 'አማ' : 'EN'}
+            </button>
             {/* Favorites counter */}
             <Link to="/favorites" className="relative p-2 rounded-lg transition-colors"
               style={{ color: '#D4AF37' }}
@@ -85,7 +95,7 @@ export default function Navbar() {
                 <Link to="/add-property"
                   className="px-4 py-2 rounded-lg font-medium text-sm transition-colors"
                   style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>
-                  + List Property
+                  {t('listProperty')}
                 </Link>
                 <Link to="/dashboard"
                   className="text-sm font-medium transition-colors"
@@ -95,24 +105,18 @@ export default function Navbar() {
                 <button onClick={handleLogout}
                   className="px-4 py-2 rounded-lg font-medium text-sm border transition-colors"
                   style={{ borderColor: '#D4AF37', color: '#D4AF37' }}>
-                  Logout
+                  {t('logout')}
                 </button>
               </div>
             ) : (
               <>
-                <Link
-                  to="/login"
-                  className="font-medium text-sm transition-colors"
-                  style={{ color: '#c8c8c8' }}
-                >
-                  Login
+                <Link to="/login" className="font-medium text-sm transition-colors" style={{ color: '#c8c8c8' }}>
+                  {t('login')}
                 </Link>
-                <Link
-                  to="/register"
+                <Link to="/register"
                   className="px-5 py-2 rounded-lg font-semibold text-sm transition-colors"
-                  style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}
-                >
-                  Register
+                  style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>
+                  {t('register')}
                 </Link>
               </>
             )}
@@ -186,15 +190,23 @@ export default function Navbar() {
               <div className="flex gap-3 px-3 pt-3">
                 {user ? (
                   <>
-                    <Link to="/add-property" className="flex-1 text-center py-2 rounded-lg text-sm font-medium" style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }} onClick={() => setMenuOpen(false)}>+ List Property</Link>
-                    <button onClick={() => { handleLogout(); setMenuOpen(false) }} className="flex-1 text-center py-2 rounded-lg text-sm border" style={{ borderColor: '#D4AF37', color: '#D4AF37' }}>Logout</button>
+                    <Link to="/add-property" className="flex-1 text-center py-2 rounded-lg text-sm font-medium" style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }} onClick={() => setMenuOpen(false)}>{t('listProperty')}</Link>
+                    <button onClick={() => { handleLogout(); setMenuOpen(false) }} className="flex-1 text-center py-2 rounded-lg text-sm border" style={{ borderColor: '#D4AF37', color: '#D4AF37' }}>{t('logout')}</button>
                   </>
                 ) : (
                   <>
-                    <Link to="/login" className="flex-1 text-center py-2 rounded-lg text-sm border" style={{ borderColor: '#D4AF37', color: '#D4AF37' }} onClick={() => setMenuOpen(false)}>Login</Link>
-                    <Link to="/register" className="flex-1 text-center py-2 rounded-lg text-sm font-medium" style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }} onClick={() => setMenuOpen(false)}>Register</Link>
+                    <Link to="/login" className="flex-1 text-center py-2 rounded-lg text-sm border" style={{ borderColor: '#D4AF37', color: '#D4AF37' }} onClick={() => setMenuOpen(false)}>{t('login')}</Link>
+                    <Link to="/register" className="flex-1 text-center py-2 rounded-lg text-sm font-medium" style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }} onClick={() => setMenuOpen(false)}>{t('register')}</Link>
                   </>
                 )}
+              </div>
+              {/* Language toggle in mobile menu */}
+              <div className="px-3 pt-2 pb-1">
+                <button onClick={toggleLang}
+                  className="w-full py-2 rounded-lg text-sm font-bold border text-center"
+                  style={{ borderColor: '#D4AF37', color: '#D4AF37' }}>
+                  {lang === 'en' ? '🇪🇹 አማርኛ' : '🇬🇧 English'}
+                </button>
               </div>
             </nav>
           </div>
