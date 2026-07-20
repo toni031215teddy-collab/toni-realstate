@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
+import AIAssistant from './components/AIAssistant'
 import Home from './pages/Home'
 import Properties from './pages/Properties'
 import PropertyDetail from './pages/PropertyDetail'
@@ -40,6 +41,7 @@ export default function App() {
         </main>
         <Footer />
         <WhatsAppButton />
+        <AIAssistant />
       </div>
     </BrowserRouter>
   )
