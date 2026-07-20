@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { useLang } from '../context/LanguageContext'
 
 export default function Login() {
   const { login } = useAuth()
+  const { t } = useLang()
   const navigate   = useNavigate()
   const [form, setForm]   = useState({ email: '', password: '' })
   const [error, setError] = useState('')
@@ -69,8 +71,8 @@ export default function Login() {
             </div>
           </div>
 
-          <h1 className="text-3xl font-bold mb-1" style={{ color: '#0B1F3A' }}>Welcome back</h1>
-          <p className="text-gray-500 text-sm mb-8">Sign in to your account to continue</p>
+          <h1 className="text-3xl font-bold mb-1" style={{ color: '#0B1F3A' }}>{t('welcomeBack')}</h1>
+          <p className="text-gray-500 text-sm mb-8">{t('signInToContinue')}</p>
 
           {error && (
             <div className="rounded-xl px-4 py-3 text-sm mb-5 flex items-start gap-2"
@@ -84,24 +86,18 @@ export default function Login() {
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
+              <label className="block text-sm font-semibold text-gray-700 mb-2">{t('emailAddr')}</label>
+              <input type="email" name="email" value={form.email} onChange={handleChange} required
                 placeholder="you@example.com"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors"
                 style={{ backgroundColor: 'white' }}
                 onFocus={e => e.target.style.borderColor = '#D4AF37'}
-                onBlur={e => e.target.style.borderColor = '#e5e7eb'}
-              />
+                onBlur={e => e.target.style.borderColor = '#e5e7eb'} />
             </div>
             <div>
               <div className="flex justify-between items-center mb-2">
-                <label className="block text-sm font-semibold text-gray-700">Password</label>
-                <a href="#" className="text-xs font-medium transition-colors" style={{ color: '#D4AF37' }}>Forgot password?</a>
+                <label className="block text-sm font-semibold text-gray-700">{t('password')}</label>
+                <a href="#" className="text-xs font-medium" style={{ color: '#D4AF37' }}>{t('forgotPassword')}</a>
               </div>
               <div className="relative">
                 <input
@@ -137,20 +133,14 @@ export default function Login() {
               className="py-3.5 rounded-xl font-bold text-sm transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               style={{ backgroundColor: '#0B1F3A', color: '#D4AF37' }}
             >
-              {loading ? (
-                <>
-                  <div className="w-4 h-4 border-2 border-t-transparent rounded-full animate-spin"
-                    style={{ borderColor: '#D4AF37', borderTopColor: 'transparent' }} />
-                  Signing in...
-                </>
-              ) : 'Sign In'}
+              {loading ? (<><div className="w-4 h-4 border-2 border-t-transparent rounded-full animate-spin" style={{ borderColor: '#D4AF37', borderTopColor: 'transparent' }} />{t('signingIn')}</>) : t('signIn')}
             </button>
           </form>
 
           <p className="text-center text-sm text-gray-500 mt-8">
-            Don't have an account?{' '}
+            {t('noAccount')}{' '}
             <Link to="/register" className="font-semibold hover:underline" style={{ color: '#D4AF37' }}>
-              Create one free
+              {t('createFree')}
             </Link>
           </p>
         </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useLang } from '../context/LanguageContext'
 
 const projects = [
   {
@@ -79,14 +80,16 @@ const projects = [
   },
 ]
 
-const statusConfig = {
-  completed: { label: 'Completed',    bg: '#dcfce7', color: '#16a34a' },
-  ongoing:   { label: 'Under Construction', bg: '#fef9c3', color: '#ca8a04' },
-  upcoming:  { label: 'Coming Soon',  bg: '#e0e7ff', color: '#4338ca' },
-}
 
 export default function Projects() {
   const [filter, setFilter] = useState('all')
+  const { t } = useLang()
+
+  const statusConfig = {
+    completed: { label: t('completed'),         bg: '#dcfce7', color: '#16a34a' },
+    ongoing:   { label: t('underConstruction'), bg: '#fef9c3', color: '#ca8a04' },
+    upcoming:  { label: t('comingSoon'),        bg: '#e0e7ff', color: '#4338ca' },
+  }
 
   const filtered = filter === 'all' ? projects : projects.filter(p => p.status === filter)
 
@@ -100,12 +103,10 @@ export default function Projects() {
         <div className="max-w-6xl mx-auto relative z-10 text-center">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4"
             style={{ backgroundColor: '#D4AF3730', color: '#D4AF37', border: '1px solid #D4AF3760' }}>
-            Portfolio
+            {t('portfolio')}
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Our Projects</h1>
-          <p className="text-gray-200 text-lg max-w-2xl mx-auto">
-            From completed landmarks to exciting developments — discover what Habesha Homes is building across Addis Ababa.
-          </p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">{t('ourProjects')}</h1>
+          <p className="text-gray-200 text-lg max-w-2xl mx-auto">{t('projectsHero')}</p>
         </div>
       </div>
 
@@ -113,9 +114,9 @@ export default function Projects() {
       <div className="py-10 px-4" style={{ backgroundColor: '#0B1F3A' }}>
         <div className="max-w-5xl mx-auto grid grid-cols-3 gap-6 text-center">
           {[
-            { value: projects.filter(p => p.status === 'completed').length, label: 'Completed' },
-            { value: projects.filter(p => p.status === 'ongoing').length,   label: 'Under Construction' },
-            { value: projects.filter(p => p.status === 'upcoming').length,  label: 'Coming Soon' },
+            { value: projects.filter(p => p.status === 'completed').length, label: t('completed') },
+            { value: projects.filter(p => p.status === 'ongoing').length,   label: t('underConstruction') },
+            { value: projects.filter(p => p.status === 'upcoming').length,  label: t('comingSoon') },
           ].map(s => (
             <div key={s.label}>
               <p className="text-4xl font-bold" style={{ color: '#D4AF37' }}>{s.value}</p>
@@ -129,16 +130,21 @@ export default function Projects() {
 
         {/* Filter Tabs */}
         <div className="flex gap-3 mb-10 justify-center flex-wrap">
-          {['all', 'completed', 'ongoing', 'upcoming'].map(f => (
-            <button key={f} onClick={() => setFilter(f)}
-              className="px-6 py-2.5 rounded-xl font-semibold text-sm capitalize transition-all"
+          {[
+            { key: 'all',       label: t('all') },
+            { key: 'completed', label: t('completed') },
+            { key: 'ongoing',   label: t('underConstruction') },
+            { key: 'upcoming',  label: t('comingSoon') },
+          ].map(f => (
+            <button key={f.key} onClick={() => setFilter(f.key)}
+              className="px-6 py-2.5 rounded-xl font-semibold text-sm transition-all"
               style={{
-                backgroundColor: filter === f ? '#0B1F3A' : 'white',
-                color:           filter === f ? '#D4AF37' : '#6b7280',
-                border:          filter !== f ? '1px solid #e5e7eb' : 'none',
-                boxShadow:       filter === f ? '0 4px 12px rgba(11,31,58,0.2)' : 'none',
+                backgroundColor: filter === f.key ? '#0B1F3A' : 'white',
+                color:           filter === f.key ? '#D4AF37' : '#6b7280',
+                border:          filter !== f.key ? '1px solid #e5e7eb' : 'none',
+                boxShadow:       filter === f.key ? '0 4px 12px rgba(11,31,58,0.2)' : 'none',
               }}>
-              {f === 'all' ? 'All Projects' : f === 'ongoing' ? 'Under Construction' : f.charAt(0).toUpperCase() + f.slice(1)}
+              {f.label}
             </button>
           ))}
         </div>
@@ -155,14 +161,8 @@ export default function Projects() {
                   <img src={project.image} alt={project.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-
-                  {/* Status badge */}
                   <span className="absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full"
-                    style={{ backgroundColor: sc.bg, color: sc.color }}>
-                    {sc.label}
-                  </span>
-
-                  {/* Progress bar for ongoing */}
+                    style={{ backgroundColor: sc.bg, color: sc.color }}>{sc.label}</span>
                   {project.completion && (
                     <div className="absolute bottom-0 left-0 right-0 px-4 pb-3">
                       <div className="flex justify-between text-white text-xs mb-1">
@@ -170,8 +170,7 @@ export default function Projects() {
                         <span className="font-bold" style={{ color: '#D4AF37' }}>{project.completion}</span>
                       </div>
                       <div className="h-2 bg-white/30 rounded-full">
-                        <div className="h-full rounded-full transition-all duration-500"
-                          style={{ width: project.completion, backgroundColor: '#D4AF37' }} />
+                        <div className="h-full rounded-full" style={{ width: project.completion, backgroundColor: '#D4AF37' }} />
                       </div>
                     </div>
                   )}

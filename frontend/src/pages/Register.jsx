@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { useLang } from '../context/LanguageContext'
 
 export default function Register() {
   const { register } = useAuth()
+  const { t } = useLang()
   const navigate      = useNavigate()
   const [form, setForm]   = useState({ name: '', email: '', password: '', password_confirmation: '' })
   const [error, setError] = useState('')
@@ -81,8 +83,8 @@ export default function Register() {
             </div>
           </div>
 
-          <h1 className="text-3xl font-bold mb-1" style={{ color: '#0B1F3A' }}>Create your account</h1>
-          <p className="text-gray-500 text-sm mb-8">Join thousands of property seekers in Addis Ababa</p>
+          <h1 className="text-3xl font-bold mb-1" style={{ color: '#0B1F3A' }}>{t('createAccount')}</h1>
+          <p className="text-gray-500 text-sm mb-8">{t('joinThousands')}</p>
 
           {error && (
             <div className="rounded-xl px-4 py-3 text-sm mb-5 flex items-start gap-2"
@@ -96,37 +98,21 @@ export default function Register() {
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                placeholder="Abebe Girma"
+              <label className="block text-sm font-semibold text-gray-700 mb-2">{t('fullNameLabel')}</label>
+              <input type="text" name="name" value={form.name} onChange={handleChange} required placeholder="Abebe Girma"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors"
                 style={{ backgroundColor: 'white' }}
-                onFocus={e => e.target.style.borderColor = '#D4AF37'}
-                onBlur={e => e.target.style.borderColor = '#e5e7eb'}
-              />
+                onFocus={e => e.target.style.borderColor = '#D4AF37'} onBlur={e => e.target.style.borderColor = '#e5e7eb'} />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                placeholder="you@example.com"
+              <label className="block text-sm font-semibold text-gray-700 mb-2">{t('emailAddr')}</label>
+              <input type="email" name="email" value={form.email} onChange={handleChange} required placeholder="you@example.com"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors"
                 style={{ backgroundColor: 'white' }}
-                onFocus={e => e.target.style.borderColor = '#D4AF37'}
-                onBlur={e => e.target.style.borderColor = '#e5e7eb'}
-              />
+                onFocus={e => e.target.style.borderColor = '#D4AF37'} onBlur={e => e.target.style.borderColor = '#e5e7eb'} />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">{t('password')}</label>
               <div className="relative">
                 <input
                   type={showPw ? 'text' : 'password'}
@@ -156,7 +142,7 @@ export default function Register() {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Confirm Password</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">{t('confirmPassword')}</label>
               <input
                 type={showPw ? 'text' : 'password'}
                 name="password_confirmation"
@@ -176,20 +162,14 @@ export default function Register() {
               className="py-3.5 rounded-xl font-bold text-sm transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               style={{ backgroundColor: '#0B1F3A', color: '#D4AF37' }}
             >
-              {loading ? (
-                <>
-                  <div className="w-4 h-4 border-2 border-t-transparent rounded-full animate-spin"
-                    style={{ borderColor: '#D4AF37', borderTopColor: 'transparent' }} />
-                  Creating account...
-                </>
-              ) : 'Create Account'}
+              {loading ? (<><div className="w-4 h-4 border-2 border-t-transparent rounded-full animate-spin" style={{ borderColor: '#D4AF37', borderTopColor: 'transparent' }} />{t('creatingAccount')}</>) : t('register')}
             </button>
           </form>
 
           <p className="text-center text-sm text-gray-500 mt-8">
-            Already have an account?{' '}
+            {t('alreadyHaveAccount')}{' '}
             <Link to="/login" className="font-semibold hover:underline" style={{ color: '#D4AF37' }}>
-              Sign In
+              {t('signIn')}
             </Link>
           </p>
         </div>
