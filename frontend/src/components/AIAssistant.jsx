@@ -233,10 +233,10 @@ export default function AIAssistant() {
 
   return (
     <>
-      {/* Floating Button */}
+      {/* Floating Button — LEFT side */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-24 right-5 z-50 w-14 h-14 rounded-2xl shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
+        className="fixed bottom-24 left-5 z-50 w-14 h-14 rounded-2xl shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
         style={{ backgroundColor: '#0B1F3A' }}
         aria-label="AI Assistant"
         title="Ask our AI Assistant"
@@ -258,9 +258,9 @@ export default function AIAssistant() {
         )}
       </button>
 
-      {/* Chat Window */}
+      {/* Chat Window — LEFT side */}
       {open && (
-        <div className="fixed bottom-44 right-4 z-50 w-[340px] sm:w-[380px] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+        <div className="fixed bottom-44 left-4 z-50 w-[340px] sm:w-[380px] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
           style={{ maxHeight: '520px', border: '1px solid #e5e7eb' }}>
 
           {/* Header */}
