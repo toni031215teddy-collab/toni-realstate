@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useFavorites } from '../context/FavoritesContext'
 import { useLang } from '../context/LanguageContext'
+import Logo from './Logo'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -31,9 +32,7 @@ export default function Navbar() {
 
           {/* Logo — desktop only */}
           <Link to="/" className="hidden md:flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl" style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>
-              T
-            </div>
+            <Logo size={44} />
             <div>
               <p className="font-bold text-lg leading-tight" style={{ color: '#F8F7F2' }}>Get As Real Estate</p>
               <p className="text-xs" style={{ color: '#D4AF37' }}>Addis Ababa, Ethiopia</p>
@@ -141,12 +140,10 @@ export default function Navbar() {
           </button>
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 md:hidden">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-lg" style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>
-              H
-            </div>
+          <Link to="/" className="flex items-center gap-2 md:hidden">
+            <Logo size={36} />
             <div>
-              <p className="font-bold text-base leading-tight" style={{ color: '#F8F7F2' }}>Get As Real Estate</p>
+              <p className="font-bold text-sm leading-tight" style={{ color: '#F8F7F2' }}>Get As Real Estate</p>
               <p className="text-xs" style={{ color: '#D4AF37' }}>Addis Ababa, Ethiopia</p>
             </div>
           </Link>
