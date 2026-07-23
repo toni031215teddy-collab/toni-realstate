@@ -14,7 +14,7 @@ const translations = {
 
     // Home Hero
     heroTitle:    'Discover Premium Properties\nAcross Addis Ababa',
-    heroSub:      'Habesha Homes — your trusted real estate partner in Ethiopia for over a decade.',
+    heroSub:      'Get As Real Estate — your trusted real estate partner in Ethiopia for over a decade.',
     searchPlaceholder: 'Search by location, e.g. Bole, CMC...',
     allTypes:     'All Types',
     forSale:      'For Sale',
@@ -32,7 +32,7 @@ const translations = {
     handPicked:   'Hand-picked properties available now',
     viewAll:      'View All',
     viewAllProperties: 'View All Properties',
-    whyChooseUs:  'Why Choose Habesha Homes',
+    whyChooseUs:  'Why Choose Get As Real Estate',
     trustedPartner: 'Your trusted real estate partner in Addis Ababa',
     whatClientsSay: 'What Our Clients Say',
     realFeedback: 'Real feedback from real families across Addis Ababa',
@@ -104,13 +104,13 @@ const translations = {
     loadingProperty: 'Loading property...',
 
     // About
-    aboutHabeshaHomes: 'About Habesha Homes',
+    aboutHabeshaHomes: 'About Get As Real Estate',
     aboutHero: 'A leading real estate developer in Addis Ababa, Ethiopia — helping families and businesses find quality properties for over a decade.',
     ourStory:   'Our Story',
     ourValues:  'Our Values',
     whatDrivesUs: 'What drives us every day',
     meetOurTeam: 'Meet Our Team',
-    expertsBehind: 'The experts behind Habesha Homes',
+    expertsBehind: 'The experts behind Get As Real Estate',
     readyToFind: 'Ready to Find Your Home?',
     ctaSub:     'Browse our verified listings or get in touch with our team today.',
     contactUs:  'Contact Us',
@@ -161,7 +161,7 @@ const translations = {
 
     // Projects
     ourProjects:  'Our Projects',
-    projectsHero: 'From completed landmarks to exciting developments — discover what Habesha Homes is building across Addis Ababa.',
+    projectsHero: 'From completed landmarks to exciting developments — discover what Get As Real Estate is building across Addis Ababa.',
     portfolio:    'Portfolio',
     all:          'All',
     completed:    'Completed',

@@ -65,7 +65,7 @@ export default function AddProperty() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
       <h1 className="text-3xl font-bold text-gray-800 mb-2">List a Property</h1>
-      <p className="text-gray-500 mb-8">Fill in the details to list your property on Habesha Homes.</p>
+      <p className="text-gray-500 mb-8">Fill in the details to list your property on Get As Real Estate.</p>
 
       {error && (
         <div className="bg-red-50 border border-red-200 text-red-600 rounded-lg px-4 py-3 text-sm mb-6">

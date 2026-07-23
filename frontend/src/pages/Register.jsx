@@ -49,7 +49,7 @@ export default function Register() {
         <div className="relative z-10 text-center px-12 max-w-md">
           <div className="w-16 h-16 rounded-2xl flex items-center justify-center font-bold text-3xl mx-auto mb-6"
             style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>H</div>
-          <h2 className="text-3xl font-bold text-white mb-3">Join Habesha Homes</h2>
+          <h2 className="text-3xl font-bold text-white mb-3">Join Get As Real Estate</h2>
           <p style={{ color: '#9ca3af' }} className="text-sm leading-relaxed">
             Create your free account and start browsing premium properties in Bole, CMC, Old Airport, Kazanchis, and across Addis Ababa.
           </p>
@@ -78,7 +78,7 @@ export default function Register() {
             <div className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xl"
               style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>H</div>
             <div>
-              <p className="font-bold text-base leading-tight" style={{ color: '#0B1F3A' }}>Habesha Homes</p>
+              <p className="font-bold text-base leading-tight" style={{ color: '#0B1F3A' }}>Get As Real Estate</p>
               <p className="text-xs text-gray-400">Addis Ababa, Ethiopia</p>
             </div>
           </div>

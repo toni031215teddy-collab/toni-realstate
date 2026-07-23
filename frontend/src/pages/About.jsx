@@ -63,7 +63,7 @@ export default function About() {
           <div>
             <h2 className="text-3xl font-bold mb-4" style={{ color: '#0B1F3A' }}>{t('ourStory')}</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              Habesha Homes was founded with one simple mission — to make quality housing accessible to every Ethiopian family. Starting in the heart of Addis Ababa, we have grown into one of the city's most trusted real estate developers.
+              Get As Real Estate was founded with one simple mission — to make quality housing accessible to every Ethiopian family. Starting in the heart of Addis Ababa, we have grown into one of the city's most trusted real estate developers.
             </p>
             <p className="text-gray-600 leading-relaxed mb-4">
               Over the past decade, we have delivered over 500 residential and commercial properties across prime locations including Bole, CMC, Old Airport, Kazanchis, and Megenagna.
@@ -74,7 +74,7 @@ export default function About() {
           </div>
           <div className="rounded-2xl overflow-hidden shadow-lg h-80">
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800"
-              alt="Habesha Homes Office" className="w-full h-full object-cover" />
+              alt="Get As Real Estate Office" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>

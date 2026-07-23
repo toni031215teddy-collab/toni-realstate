@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl" style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>H</div>
               <div>
-                <p className="font-bold text-lg leading-tight text-white">Habesha Homes</p>
+                <p className="font-bold text-lg leading-tight text-white">Get As Real Estate</p>
                 <p className="text-xs" style={{ color: '#D4AF37' }}>Addis Ababa, Ethiopia</p>
               </div>
             </div>
@@ -102,7 +102,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm border-t" style={{ borderColor: '#1e3f7a', color: '#666' }}>
-          <p>© {new Date().getFullYear()} Habesha Homes. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Get As Real Estate. All rights reserved.</p>
           <p>Built with ❤️ in Addis Ababa</p>
         </div>
       </div>

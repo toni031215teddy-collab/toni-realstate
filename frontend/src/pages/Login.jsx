@@ -42,7 +42,7 @@ export default function Login() {
         <div className="relative z-10 text-center px-12 max-w-md">
           <div className="w-16 h-16 rounded-2xl flex items-center justify-center font-bold text-3xl mx-auto mb-6"
             style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>H</div>
-          <h2 className="text-3xl font-bold text-white mb-3">Habesha Homes</h2>
+          <h2 className="text-3xl font-bold text-white mb-3">Get As Real Estate</h2>
           <p style={{ color: '#9ca3af' }} className="text-sm leading-relaxed">
             Your trusted real estate partner in Addis Ababa. Find your dream home in Bole, CMC, Old Airport, Kazanchis, and beyond.
           </p>
@@ -66,7 +66,7 @@ export default function Login() {
             <div className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xl"
               style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>H</div>
             <div>
-              <p className="font-bold text-base leading-tight" style={{ color: '#0B1F3A' }}>Habesha Homes</p>
+              <p className="font-bold text-base leading-tight" style={{ color: '#0B1F3A' }}>Get As Real Estate</p>
               <p className="text-xs text-gray-400">Addis Ababa, Ethiopia</p>
             </div>
           </div>

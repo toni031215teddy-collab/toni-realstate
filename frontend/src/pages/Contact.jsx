@@ -80,7 +80,7 @@ export default function Contact() {
           {/* Map */}
           <div className="rounded-2xl overflow-hidden shadow-md border border-gray-100">
             <iframe
-              title="Habesha Homes Office Location"
+              title="Get As Real Estate Office Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15762.340855597!2d38.78!3d9.01!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cef5ab402d%3A0x8467b6b037a24d49!2sBole%2C%20Addis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
               width="100%" height="220" style={{ border: 0, display: 'block' }}
               allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />

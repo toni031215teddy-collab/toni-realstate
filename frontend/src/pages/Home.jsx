@@ -57,7 +57,7 @@ const whyChooseUs = [
 
 const testimonials = [
   { name: 'Aster M.', location: 'Bole', text: 'We found our 3-bedroom home in Bole within two weeks. The team was professional, transparent about pricing, and walked us through every step of the process.' },
-  { name: 'Dawit T.', location: 'CMC', text: 'Listed my CMC villa and had serious buyers within 10 days. Habesha Homes handled everything — the paperwork, the viewings, the negotiation. Excellent service.' },
+  { name: 'Dawit T.', location: 'CMC', text: 'Listed my CMC villa and had serious buyers within 10 days. Get As Real Estate handled everything — the paperwork, the viewings, the negotiation. Excellent service.' },
   { name: 'Sara K.', location: 'Old Airport', text: 'Invested in a property near Old Airport three years ago on their recommendation. The value has grown over 40%. Best financial decision I ever made.' },
 ]
 

@@ -63,7 +63,7 @@ export default function Admin() {
               style={{ backgroundColor: '#D4AF37', color: '#0B1F3A' }}>⚙️</div>
             <div>
               <h1 className="text-2xl font-bold">Admin Panel</h1>
-              <p style={{ color: '#a0a0a0' }} className="text-sm">Habesha Homes Management</p>
+              <p style={{ color: '#a0a0a0' }} className="text-sm">Get As Real Estate Management</p>
             </div>
           </div>
           <Link to="/" className="px-4 py-2 rounded-xl text-sm font-medium border"

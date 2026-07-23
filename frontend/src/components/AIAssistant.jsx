@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 // ── Knowledge Base ──────────────────────────────────────────────
 const KB = {
   company: {
-    name: 'Habesha Homes',
+    name: 'Get As Real Estate',
     founded: '2014',
     mission: 'Making quality housing accessible to every Ethiopian family.',
     office: 'Bole, Addis Ababa, Ethiopia',
@@ -41,15 +41,15 @@ function getResponse(input, leadInfo, setLeadInfo, setAwaitingName, setAwaitingP
   // Greetings
   if (/^(hi|hello|hey|selam|ሰላም|እንደምን|good|start|begin)/.test(msg)) {
     return isAm
-      ? `ሰላም! ወደ **ሀበሻ ሆምስ** እንኳን ደህና መጡ። 🏠\n\nስለ ፕሮጀክቶቻችን፣ ቦታዎች፣ አፓርትመንት ዓይነቶች፣ ወይም ቢሮ አድራሻ ጥያቄ ካለዎት ደስ ይለኛል።\n\nምን ልረዳዎ?`
-      : `Hello! Welcome to **Habesha Homes**. 🏠\n\nI can help you with information about our projects, locations, apartment types, buying process, and how to reach our team.\n\nWhat would you like to know?`
+      ? `ሰላም! ወደ **ጌት አስ ሪል እስቴት** እንኳን ደህና መጡ። 🏠\n\nስለ ፕሮጀክቶቻችን፣ ቦታዎች፣ አፓርትመንት ዓይነቶች፣ ወይም ቢሮ አድራሻ ጥያቄ ካለዎት ደስ ይለኛል።\n\nምን ልረዳዎ?`
+      : `Hello! Welcome to **Get As Real Estate**. 🏠\n\nI can help you with information about our projects, locations, apartment types, buying process, and how to reach our team.\n\nWhat would you like to know?`
   }
 
   // About company
   if (/about|company|who are|history|since|ስለ|ታሪክ|መቼ/.test(msg)) {
     return isAm
-      ? `**ሀበሻ ሆምስ** በ${KB.company.founded} ዓ.ም. ተቋቋመ። ዓላማችን ለእያንዳንዱ ኢትዮጵያዊ ቤተሰብ ጥራት ያለው ቤት ተደራሽ ማድረግ ነው።\n\nበአዲስ አበባ ውስጥ 500+ ቤቶችን አቅርበናል።`
-      : `**Habesha Homes** was founded in ${KB.company.founded} with one mission: "${KB.company.mission}"\n\nOver the past decade we have delivered 500+ residential and commercial properties across Addis Ababa.`
+      ? `**ጌት አስ ሪል እስቴት** በ${KB.company.founded} ዓ.ም. ተቋቋመ። ዓላማችን ለእያንዳንዱ ኢትዮጵያዊ ቤተሰብ ጥራት ያለው ቤት ተደራሽ ማድረግ ነው።\n\nበአዲስ አበባ ውስጥ 500+ ቤቶችን አቅርበናል።`
+      : `**Get As Real Estate** was founded in ${KB.company.founded} with one mission: "${KB.company.mission}"\n\nOver the past decade we have delivered 500+ residential and commercial properties across Addis Ababa.`
   }
 
   // Projects
@@ -171,8 +171,8 @@ export default function AIAssistant() {
         setMessages([{
           role: 'ai',
           text: isAm
-            ? `ሰላም! እኔ **ሀበሻ ሆምስ AI ረዳት** ነኝ። 🏠\n\nስለ ፕሮጀክቶቻችን፣ ቦታዎች፣ አፓርትመንት ዓይነቶች ወይም ቢሮ አድራሻ ጥያቄ ካለዎት ጠይቁ!\n\nምን ልረዳዎ?`
-            : `Hi! I'm the **Habesha Homes AI Assistant**. 🏠\n\nAsk me about our projects, locations, apartment types, buying process, or how to contact our team.\n\nHow can I help you today?`
+            ? `ሰላም! እኔ **ጌት አስ ሪል እስቴት AI ረዳት** ነኝ። 🏠\n\nስለ ፕሮጀክቶቻችን፣ ቦታዎች፣ አፓርትመንት ዓይነቶች ወይም ቢሮ አድራሻ ጥያቄ ካለዎት ጠይቁ!\n\nምን ልረዳዎ?`
+            : `Hi! I'm the **Get As Real Estate AI Assistant**. 🏠\n\nAsk me about our projects, locations, apartment types, buying process, or how to contact our team.\n\nHow can I help you today?`
         }])
       }, 600)
     }
@@ -274,7 +274,7 @@ export default function AIAssistant() {
                 </svg>
               </div>
               <div>
-                <p className="text-white font-bold text-sm">Habesha Homes AI</p>
+                <p className="text-white font-bold text-sm">Get As Real Estate AI</p>
                 <div className="flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                   <p className="text-xs" style={{ color: '#a0a0a0' }}>{isAm ? 'ዝግጁ ነኝ' : 'Online now'}</p>
@@ -377,7 +377,7 @@ export default function AIAssistant() {
 
           {/* Footer */}
           <div className="text-center py-1.5 text-xs bg-white" style={{ color: '#a0a0a0' }}>
-            Habesha Homes AI Assistant
+            Get As Real Estate AI Assistant
           </div>
         </div>
       )}

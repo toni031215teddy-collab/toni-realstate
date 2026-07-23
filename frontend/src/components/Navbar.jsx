@@ -35,7 +35,7 @@ export default function Navbar() {
               T
             </div>
             <div>
-              <p className="font-bold text-lg leading-tight" style={{ color: '#F8F7F2' }}>Habesha Homes</p>
+              <p className="font-bold text-lg leading-tight" style={{ color: '#F8F7F2' }}>Get As Real Estate</p>
               <p className="text-xs" style={{ color: '#D4AF37' }}>Addis Ababa, Ethiopia</p>
             </div>
           </Link>
@@ -146,7 +146,7 @@ export default function Navbar() {
               H
             </div>
             <div>
-              <p className="font-bold text-base leading-tight" style={{ color: '#F8F7F2' }}>Habesha Homes</p>
+              <p className="font-bold text-base leading-tight" style={{ color: '#F8F7F2' }}>Get As Real Estate</p>
               <p className="text-xs" style={{ color: '#D4AF37' }}>Addis Ababa, Ethiopia</p>
             </div>
           </Link>
